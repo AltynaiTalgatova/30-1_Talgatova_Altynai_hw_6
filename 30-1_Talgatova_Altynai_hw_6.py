@@ -20,24 +20,25 @@ def bubble_sort(unsorted_list):
 bubble_sort([88, 58, 7, 11, 12, 39, 23, 77])
 
 
-def binary_search(searching_object, list1):
-    list1.sort()
-
-    middle = len(list1) // 2
+def binary_search1(val, n):
+    n = 5000
+    result_ok = False
     first = 0
-    last = len(list1) - 1
-
-    while list1[middle] != searching_object and first <= last:
-        if searching_object > list1[middle]:
+    last = n - 1
+    while first < last:
+        middle = (first + last) // 2
+        if val == middle:
+            first = middle
+            last = first
+            result_ok = True
+        elif val > middle:
             first = middle + 1
         else:
             last = middle - 1
-        middle = (first + last) // 2
-
-    if first > last:
-        print('Not found')
+    if result_ok:
+        print(f'index: {first}')
     else:
-        print(f'index = {middle}')
+        print('this number does not exist')
 
 
-binary_search(88, [1, 5, 8, 12, 19, 25, 38, 49, 51, 64, 77, 88, 93, 100])
+binary_search1(88, [1, 5, 8, 12, 19, 25, 38, 49, 51, 64, 77, 88, 93, 100])
